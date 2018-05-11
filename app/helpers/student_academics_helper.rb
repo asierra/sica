@@ -1,0 +1,2 @@
+module StudentAcademicsHelper
+end

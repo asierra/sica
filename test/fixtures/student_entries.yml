@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  entry: 2018-02-27 13:10:14
+
+two:
+  student: two
+  entry: 2018-02-27 13:10:14

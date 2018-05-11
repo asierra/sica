@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Nationalities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Iso2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nationalities.each do |nationality| %>
+      <tr>
+        <td><%= nationality.id %></td>
+        <td><%= nationality.name %></td>
+        <td><%= nationality.country %></td>
+        <td><%= nationality.iso2 %></td>
+        <td><%= link_to 'Show', nationality %></td>
+        <td><%= link_to 'Edit', edit_nationality_path(nationality) %></td>
+        <td><%= link_to 'Destroy', nationality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nationality', new_nationality_path %>

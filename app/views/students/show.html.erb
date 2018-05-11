@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <%= render 'show', student: @student %>
+</table>
+
+<strong>Beca:</strong>
+  <%= @scholarship %>
+</p>
+<p>
+  <strong>Nacionalidad:</strong>
+  <%= @student.nationality.name if @student.nationality %>
+</p>
+<p>
+  <strong>Lugar de nacimiento:</strong>
+  <%= @student.place_of_birth %>
+</p>
+<p>
+  <strong>Contacto de emergencia:</strong>
+  <%= @student.contact_name %>
+</p>
+
+<p>
+  <strong>Teléfono de emergencia:</strong>
+  <%= @student.contact_tel %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= Student::STATUS[@student.status] %>
+</p>
+
+<% if current_user %>
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<% end %>
+<%= link_to 'Back', students_path %>

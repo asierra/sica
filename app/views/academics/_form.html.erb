@@ -1,0 +1,27 @@
+<%= form_with(model: academic, local: true) do |form| %>
+  <% if academic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(academic.errors.count, "error") %> prohibited this academic from being saved:</h2>
+
+      <ul>
+      <% academic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Nombre
+    <%= form.text_field :name, id: :academic_name %>
+  </div>
+
+  <div class="field">
+    No. de trabajador
+    <%= form.text_field :account, id: :academic_account %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

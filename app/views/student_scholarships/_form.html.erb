@@ -1,0 +1,27 @@
+<%= form_with(model: student_scholarship, local: true) do |form| %>
+  <% if student_scholarship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_scholarship.errors.count, "error") %> prohibited this student_scholarship from being saved:</h2>
+
+      <ul>
+      <% student_scholarship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id, id: :student_scholarship_student_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scholarship_id %>
+    <%= form.text_field :scholarship_id, id: :student_scholarship_scholarship_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @student_scholarship.student %>
+</p>
+
+<p>
+  <strong>Scholarship:</strong>
+  <%= @student_scholarship.scholarship %>
+</p>
+
+<%= link_to 'Edit', edit_student_scholarship_path(@student_scholarship) %> |
+<%= link_to 'Back', student_scholarships_path %>

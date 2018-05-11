@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Estudiante:</strong>
+  <%= @student_academic.student.full_name %>
+</p>
+
+<p>
+  <%= render 'show', student: @student %>
+</p>
+
+<%= link_to 'Edit', edit_student_academic_path(@student_academic) %> |
+<%= link_to 'Back', student_academics_path %>

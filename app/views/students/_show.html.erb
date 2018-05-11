@@ -1,0 +1,9 @@
+    <td>
+     <%= image_tag("/students/show_photo/"+@student.id.to_s, class: "bevel", height: "100", style: "float:left") %>
+    </td>
+    <td><b><%= student.full_name %></b><br/>
+      No. de cuenta: <%= student.account %><br/>
+      Email: <%= student.email %><br/>
+      Procedencia: <%= student.institution %>
+    </td>
+

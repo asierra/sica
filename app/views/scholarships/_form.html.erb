@@ -1,0 +1,22 @@
+<%= form_with(model: scholarship, local: true) do |form| %>
+  <% if scholarship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scholarship.errors.count, "error") %> prohibited this scholarship from being saved:</h2>
+
+      <ul>
+      <% scholarship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :scholarship_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cursos</h1>
+
+<table>
+  <thead>
+    <tr bgcolor="#a9c2d4">
+      <th>Nombre</th>
+      <th>Días</th>
+      <th>Horario</th>
+      <th>Imparte</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.course_day %></td>
+        <td><%= course.course_time %></td>
+        <td><%= course.academic.name %></td>
+        <td><%= link_to 'Ver', course %></td>
+        <td><%= link_to 'Editar', edit_course_path(course) %></td>
+        <td><%= link_to 'Destruir', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @posts %>
+
+<p>
+<%= link_to 'Curso nuevo', new_course_path %>
+</p>
+
+<p>
+<%= link_to 'Principal', :main %>
+</p>

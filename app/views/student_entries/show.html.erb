@@ -1,0 +1,38 @@
+
+<div align="center">
+  
+<table  width="850px">
+  <tr>
+    <td width="20%">
+      <img src="<%= url_for(:action => 'show_photo', :controller=>'students', :id => @student.id) %>" height="200">
+    </td>
+    <td width="80%" bgcolor="#e4f2f3"><b class="bigname"><%= @student.full_name %></b><br/>
+      <span class="mediumname">No. de cuenta: <%= @student.account %><br/>
+      Email: <%= @student.email %><br/>
+	Facultad o Institución de procedencia:</span> <br/>
+      <span class="mediumname2"><%= @student.institution %></span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#e4f2f3" align="center">
+      <span class="bigname2">
+      <% @student.student_courses.each do |course| %>
+      <%= course.course.full %><br/>
+      <% end %>
+      <br/>
+      <% @student.student_academics.each do |activity| %>
+      <%= activity.full %><br/>
+      <% end %>
+      </span>
+    </td>
+  </tr>
+</table>
+</div>
+
+<p align="center" class="medium">Si el estudiante no aparece en el
+      sistema significa que su cuenta aún no ha sido
+      activada. <br>Favor de pasar a Coordinación Docente para
+      resolver el problema.</span>
+</p>
+
+<%= @number_read %>

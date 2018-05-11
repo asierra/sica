@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user %>
+<h1>Estudiantes del CCA</h1>
+
+<table>
+  <thead>
+    <tr  bgcolor="#a9c2d4">
+      <th>Foto</th>
+      <th>Información</th>
+      <th>Curso y/o actividad</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+    <tr>
+      <td>
+	<img src="<%= url_for(:action => 'show_photo', :id => student.id) %>" height="100">
+      </td>
+      <td><b><%= student.full_name %></b><br/>
+        No. de cuenta: <%= student.account %><br/>
+        Email: <%= student.email %><br/>
+        Procedencia: <%= student.institution %>
+      </td>
+      <td>
+	<% student.student_courses.each do |course| %>
+	<%= course.course.full %><br/>
+	<% end %>
+	<br/>
+	<% student.student_academics.each do |activity| %>
+	<%= activity.full %><br/>
+	<% end %>
+      </td>
+      <td>
+	<%= button_to Student::STATUS[student.status], { :action => "activate", :id => student.id }, {:class => Student::STATUS[student.status] } %>
+      </td>
+      <td><%= link_to 'Ver', student %></td>
+      <td><%= link_to 'Editar', edit_student_path(student) %></td>
+      <td><%= link_to 'Eliminar', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @posts %>
+
+<p>
+<%= link_to 'Nuevo estudiante', new_student_path %>
+</p>
+
+<p>
+<%= link_to 'Principal', :main %>
+</p>
+
+<% else %>
+<h1>Tu solicitud ha sido enviada</h1>
+
+<p>
+  En cuanto sea revisada tu información, la Coordinación Docente del
+  Centro de Ciencias de la Atmósfera <b>activará</b> tu acceso.
+</p>
+
+<p>
+<%= link_to 'Nuevo estudiante', new_student_path %>
+</p>
+
+<% end %>
+
+

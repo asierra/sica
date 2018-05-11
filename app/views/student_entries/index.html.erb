@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ingreso de estudiantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Ingreso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_entries.each do |student_entry| %>
+      <tr>
+        <td><%= student_entry.student.full_name %></td-->
+        <td><%= student_entry.entry %></td>
+        <td><%= link_to 'Ver', student_entry %></td>
+        <td><%= link_to 'Destruir', student_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= will_paginate @posts %>
+
+<p>
+<%= link_to 'Principal', :main %>
+</p>
+

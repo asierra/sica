@@ -1,0 +1,102 @@
+#encoding: utf-8
+
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr class="field">
+      <td>
+	Nombre <br/>
+	<%= form.text_field :name, id: :student_name %>
+      </td>
+      <td>
+	Apellido paterno <br/>
+	<%= form.text_field :surname_paternal, id: :student_surname_paternal %>
+      </td>
+      <td>
+	Apellido materno <br/>
+	<%= form.text_field :surname_maternal, id: :student_surname_maternal %>
+      </td>
+    </tr>
+    <tr class="field">
+      <td>
+	Número de cuenta <br/>
+	<%= form.text_field :account, id: :student_account %>
+      </td>
+      <td>
+	Email <br/>
+	<%= form.text_field :email, id: :student_email %>
+      </td>
+      <td>
+	Facultad o institución de procedencia <br/>
+	<%= form.text_field :institution, id: :student_institution %>
+      </td>
+    </tr>
+  </table>
+
+  <div class="field">
+    Foto (imagen en formato JPEG con rostro claramente visible)
+    <%= form.file_field :filephoto, id: :student_filephoto %>
+  </div>
+
+  <div class="field">
+    ¿Tienes alguna beca?
+    <%= form.collection_select(:scholarship_id, Scholarship.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    Nacionalidad
+    <%= form.collection_select(:nationality_id, Nationality.all, :id, :name, {:selected => "484"}) %>
+  </div>
+  
+  <div class="field">
+    Lugar de nacimiento
+    <%= form.text_field :place_of_birth, id: :student_place_of_birth %>  
+  </div>
+
+  <div class="field">
+    Nombre de contacto en caso de emergencia
+    <%= form.text_field :contact_name, id: :student_contact_name %>
+  </div>
+
+  <div class="field">
+    Teléfono de contacto de emergencia
+    <%= form.text_field :contact_tel, id: :student_contact_tel %>
+  </div>
+
+<% if current_user %>
+  <div class="field">
+    Status
+    <%= form.select(:status, [['Inactivo', 0], ['Activo', 1]]) %>
+  </div>  
+<% else %>
+  <div class="field">
+    <label>Selecciona un curso</label>
+    <%= form.collection_select(:course, Course.all, :id, :name, {:include_blank => "Ninguno"}) %>
+  </div>
+
+  <div class="field">
+    <label>O selecciona una actividad</label>
+    <%= form.collection_select(:activity, Activity.all, :id, :name, {:include_blank => "Ninguna"}) %>
+  </div>
+
+  <div class="field">
+    <label>y su académico asociado</label>
+    <%= form.collection_select(:academic, Academic.all, :id, :name) %>
+  </div>
+
+<% end %>
+  <div class="actions">
+    <%= form.submit "Registrarte" %>
+  </div>
+<% end %>

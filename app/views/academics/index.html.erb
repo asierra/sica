@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Académicos</h1>
+
+<table>
+  <thead>
+    <tr bgcolor="#a9c2d4">
+      <th>Nombre</th>
+      <th>No. trabajador</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @academics.each do |academic| %>
+      <tr>
+        <td><%= academic.name %></td>
+        <td><%= academic.account %></td>
+        <td><%= link_to 'Ver', academic %></td>
+        <td><%= link_to 'Editar', edit_academic_path(academic) %></td>
+        <td><%= link_to 'Destruir', academic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @posts %>
+
+<p>
+<%= link_to 'Nuevo Académico', new_academic_path %>
+</p>
+
+<p>
+<%= link_to 'Principal', :main %>
+</p>
