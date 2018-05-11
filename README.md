@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sistema de Control de Aceso (SICA)
 
 El sistema SICA se desarrolló originalmente para registrar el acceso
@@ -27,3 +28,7 @@ License:  GPL 3.0
 Copyright (c) 2018 Alejandro Aguilar Sierra (asierra@unam.mx)
 	           Centro de Ciencias de la Atmosfera, UNAM
 
+=======
+# students
+Sistema para registrar el acceso de estudiantes a un edificio, con base en el código de barras de su credencial.
+>>>>>>> 6ba374563b4bda69f03ce2d0b8a24464c027a12b
