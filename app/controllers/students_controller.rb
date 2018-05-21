@@ -1,3 +1,8 @@
+#  This file is part of SICA: Sistema de Control de Acceso
+#  Copyright (c) 2018  Alejandro Aguilar Sierra (asierra@unam.mx)
+#  Centro de Ciencias de la Atmosfera, UNAM
+#  License: GNU GPL 3.0
+
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :new, :create, :show, :show_photo]
