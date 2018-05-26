@@ -28,6 +28,8 @@
 <%= will_paginate @posts %>
 
 <p>
-<%= link_to 'Principal', :main %>
+  <%= link_to "Exportar a CSV", student_entries_path(format: "csv") %>
+  <br/>
+  <%= link_to 'Principal', :main %>
 </p>
 
