@@ -9,6 +9,7 @@
       <th>Días</th>
       <th>Horario</th>
       <th>Imparte</th>
+      <th>Semestre</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= course.course_day %></td>
         <td><%= course.course_time %></td>
         <td><%= course.academic.name %></td>
+        <td><%= course.semester %></td>
         <td><%= link_to 'Ver', course %></td>
         <td><%= link_to 'Editar', edit_course_path(course) %></td>
         <td><%= link_to 'Destruir', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>

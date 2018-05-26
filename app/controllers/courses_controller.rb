@@ -5,6 +5,11 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.paginate(:page => params[:page], :per_page => 10).order('name ASC')
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @courses.to_csv, filename: "courses-#{Date.today}.csv" }
+    end
   end
 
   # GET /courses/1
@@ -70,6 +75,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :course_day, :course_time, :academic_id)
+      params.require(:course).permit(:name, :course_day, :course_time, :academic_id, :semester)
     end
 end

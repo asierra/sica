@@ -7,6 +7,11 @@ class StudentEntriesController < ApplicationController
   def index
     if current_user
       @student_entries = StudentEntry.paginate(:page => params[:page], :per_page => 10).order('id DESC')
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data StudentEntry.all.to_csv, filename: "entradas-#{Date.today}.csv" }
+      end
     else
       redirect_to action: "paso"
     end
