@@ -59,6 +59,19 @@ class Student < ApplicationRecord
   def has_course_or_activity
     @has_course_or_activity
   end
+
+  def self.to_csv
+    attributes = %w{Estudiante Email Activo}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |student|
+        csv <<  [ student.full_name, student.email, student.status ]
+      end
+    end
+  end
+  
   
   private
 

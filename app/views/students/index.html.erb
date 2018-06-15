@@ -45,11 +45,16 @@
   </tbody>
 </table>
 
+<%= page_entries_info @posts %>
 <br>
 <%= will_paginate @posts %>
 
 <p>
 <%= link_to 'Nuevo estudiante', new_student_path %>
+</p>
+
+<p>
+  <%= link_to "Exportar a CSV", students_path(format: "csv") %>
 </p>
 
 <p>

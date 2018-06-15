@@ -11,7 +11,11 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     if current_user
-      @students = Student.paginate(:page => params[:page], :per_page => 5).order('name ASC')
+      @students = Student.paginate(:page => params[:page], :per_page => 5).order('surname_paternal ASC')
+      respond_to do |format|
+        format.html
+        format.csv { send_data Student.all.to_csv, filename: "students-#{Date.today}.csv" }
+      end      
     else
       render :layout => 'simple'
     end
