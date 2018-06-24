@@ -60,6 +60,25 @@ class Student < ApplicationRecord
     @has_course_or_activity
   end
 
+  def host
+  end
+
+  def first_course_or_activity
+    if self.student_courses.first.nil?
+      self.student_academics.first.activity.name
+    else
+      "Curso "+self.student_courses.first.course.name
+    end
+  end
+
+  def first_host
+    if self.student_courses.first.nil?
+      self.student_academics.first.academic.name
+    else
+      self.student_courses.first.course.academic.name
+    end
+  end
+  
   def self.to_csv
     attributes = %w{Estudiante Email Activo}
 
